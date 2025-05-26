@@ -77,7 +77,7 @@ main{
         color: var(--content-primary);
 
         &::placeholder{
-            color: var(--content-primary);
+            color: var(--content-tertiary);
         }
 
         &:hover{
@@ -210,5 +210,15 @@ main{
     .add-item{
         display: grid;
         grid-template-columns: repeat(10, 1fr);
+        gap: 1.6rem;
+
+        input {
+            margin-bottom: 0;
+            grid-column: 1 / 8;
+        }
+
+        button {
+            grid-column: 8 / 11;
+        }
     }
 }
