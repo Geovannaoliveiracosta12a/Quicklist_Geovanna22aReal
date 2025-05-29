@@ -20,19 +20,28 @@ function addItem(){
 function showItemsList(){
     const sectionList = document.querySelector(".list")
 
+    sectionList.innerHTML = ""
+
+    items.sort((itemA, itemB) => Number(itemA.checked) - Number (itemB.checked))
+
     items.map((item, index) => {
         sectionList.innerHTML += `
             <div class="item">
                 <div>
-                    <input type="checkbox" name="list" id="item-1">
+                    <input type="checkbox" name="list" id="item-${index}">
                     <div class="custom-checkbox">
                         <img src="./assets/checked.svg" alt="checked">
                     </div>
-                    <label for="item-1">Pão de forma</label>
+                    <label for="item-${index}">${item.name}</label>
                 </div>
                 <button>
                     <img src="./assets/trash-icon.svg" alt="trash icon">
                 </button>
             </div>`
     })
+}
+
+function checkItem(itemNome){
+    const item = items.find((item) => item.name === itemName)
+    item.checked = !item.checked
 }
