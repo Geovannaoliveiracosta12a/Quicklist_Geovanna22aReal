@@ -28,7 +28,7 @@ function showItemsList(){
         sectionList.innerHTML += `
             <div class="item">
                 <div>
-                    <input type="checkbox" name="list" id="item-${index}">
+                    <input type="checkbox" name="list" id="item-${index}" ${item.checked === true ? "checked" : ""}>
                     <div class="custom-checkbox">
                         <img src="./assets/checked.svg" alt="checked">
                     </div>
@@ -44,4 +44,5 @@ function showItemsList(){
 function checkItem(itemNome){
     const item = items.find((item) => item.name === itemName)
     item.checked = !item.checked
+    showItemsList()
 }
