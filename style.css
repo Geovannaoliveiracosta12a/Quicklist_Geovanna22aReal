@@ -138,6 +138,10 @@ main{
             display: none;
         }
 
+        label{
+            cursor: pointer;
+        }
+
         div:has(input:checked){
             .custom-checkbox{
                 background: var(--color-brand);
