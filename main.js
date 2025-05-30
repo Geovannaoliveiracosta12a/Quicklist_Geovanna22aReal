@@ -1,9 +1,7 @@
-
 const items = []
 
-function addItem(){
+function addItem() {
     const itemName = document.querySelector("#item").value
-
 
     const item = {
         name: itemName,
@@ -14,25 +12,25 @@ function addItem(){
 
     document.querySelector("#item").value = ""
 
-   showItemsList()
+    showItemsList()
 }
 
-function showItemsList(){
+function showItemsList() {
     const sectionList = document.querySelector(".list")
 
     sectionList.innerHTML = ""
 
-    items.sort((itemA, itemB) => Number(itemA.checked) - Number (itemB.checked))
+    items.sort((itemA, itemB) => Number(itemA.checked) - Number(itemB.checked))
 
     items.map((item, index) => {
         sectionList.innerHTML += `
             <div class="item">
                 <div>
-                    <input type="checkbox" name="list" id="item-${index}" ${item.checked === true ? "checked" : ""}>
+                    <input type="checkbox" name="list" id="item-${index}" ${item.checked ? "checked" : ""}>
                     <div class="custom-checkbox">
                         <img src="./assets/checked.svg" alt="checked">
                     </div>
-                    <label for="item-${index}">${item.name}</label>
+                    <label for="item-${index}" onclick="checkItem('${item.name}')">${item.name}</label>
                 </div>
                 <button>
                     <img src="./assets/trash-icon.svg" alt="trash icon">
@@ -41,8 +39,10 @@ function showItemsList(){
     })
 }
 
-function checkItem(itemNome){
-    const item = items.find((item) => item.name === itemName)
-    item.checked = !item.checked
-    showItemsList()
+function checkItem(itemNome) {
+    const item = items.find((item) => item.name === itemNome)
+    if (item) {
+        item.checked = !item.checked
+        showItemsList()
+    }
 }
